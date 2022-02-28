@@ -1,0 +1,15 @@
+#Редирект с www. на без www.
+RewriteEngine On
+RewriteCond %{ENV:HTTPS} !on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#www:
+RewriteCond %{HTTP_HOST} ^www\.(.*)$
+RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+
+
+#RewriteCond %{HTTP_REFERER} !www\.google\..* [NC]
+#RewriteCond %{HTTP_REFERER} !yandex\..* [NC]
+#RewriteCond  %{HTTP_REFERER} !НАЗВАНИЕ ДОМЕНА\.com [NC]
+#RewriteCond %{HTTP_USER_AGENT} !.*Google.* [NC]
+#RewriteCond %{HTTP_USER_AGENT} !.*Yandex.* [NC]
+#RewriteRule ^  -  [R=404,L]
